@@ -7,7 +7,6 @@ author "Carlooss"
 version "1"
 
 client_scripts {
-	"@es_extended/imports.lua",
 	'@es_extended/locale.lua',
 	"Client/Modules/*.lua",
 	"Config/*.lua",
