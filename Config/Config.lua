@@ -6,6 +6,7 @@ Config.Align = 'right'
 -- Triggers
 
 Config.Triggers = { -- Change triggers :)
+    EsxEvent = 'esx:getSharedObject',
     LoadSkin = 'skinchanger:loadSkin',
     PlayerOutfit = 'esx_eden_clotheshop:getPlayerOutfit',
     GetPSkin = 'skinchanger:getSkin',
