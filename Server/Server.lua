@@ -1,5 +1,5 @@
 ESX = nil
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+TriggerEvent(Config.Triggers.EsxEvent, function(obj) ESX = obj end)
 
 print('^0[^4C-GANGS^0] Script ^2Started^0')
 
