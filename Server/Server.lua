@@ -21,7 +21,7 @@ end)
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() == resourceName then
         function checkVersion(error, latestVersion, headers)
-			local currentVersion = Config['Version']    
+			local currentVersion = Config.Version  
             local name = "[^4c-gangs^7]"
             Citizen.Wait(2000)
             
