@@ -59,12 +59,12 @@ CreateThread(function()
                         if IsPedInAnyVehicle(PlayerPedId()) then
                             ShowFloatingHelpNotification('Press ~r~[E]~w~ to delete the vehicle', v.DeleteCars)
                             if IsControlJustPressed(0, 38) then
-                                local veh = ESX.Game.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
-                                TaskLeaveVehicle(PlayerPedId(), veh, 0)
+                                local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+                                TaskLeaveVehicle(PlayerPedId(), vehicle, 0)
                                 Wait(3000)
-                                NetworkFadeOutEntity(veh, false, true)
-                                Wait(1000)
-                                DeleteVehicle(GetVehiclePedIsIn(_pid))
+                                NetworkFadeOutEntity(vehicle, false, true)
+                                Wait(500)
+                                DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
                                 ESX.ShowNotification('You have ~r~saved~w~ a ~g~vehicle~s~ in the ~g~garage')
                             end
                         end
