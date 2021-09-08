@@ -97,6 +97,7 @@ OpenClothesMenu = function()
     }, function(data, menu)
 
         if data.current.value == 'skin' then
+            menu.close()
             local config = {
                 ped = true,
                 headBlend = true,
