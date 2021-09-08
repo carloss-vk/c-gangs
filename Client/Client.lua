@@ -64,7 +64,7 @@ CreateThread(function()
                                 Wait(3000)
                                 NetworkFadeOutEntity(vehicle, false, true)
                                 Wait(500)
-                                DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
+                                DeleteVehicle(vehicle)
                                 ESX.ShowNotification('You have ~r~saved~w~ a ~g~vehicle~s~ in the ~g~garage')
                             end
                         end
