@@ -1,5 +1,8 @@
 Config = {}
 
+-- Version check
+Config.Version = 1.2
+
 -- Menu config
 Config.Align = 'right'
 
