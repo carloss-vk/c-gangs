@@ -59,12 +59,12 @@ CreateThread(function()
                         if IsPedInAnyVehicle(PlayerPedId()) then
                             ShowFloatingHelpNotification('Press ~r~[E]~w~ to delete the vehicle', v.DeleteCars)
                             if IsControlJustPressed(0, 38) then
-                                local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-                                TaskLeaveVehicle(PlayerPedId(), vehicle, 0)
+                                local veh = ESX.Game.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
+                                TaskLeaveVehicle(PlayerPedId(), veh, 0)
                                 Wait(3000)
-                                NetworkFadeOutEntity(vehicle, false, true)
-                                Wait(500)
-                                DeleteVehicle(vehicle)
+                                NetworkFadeOutEntity(veh, false, true)
+                                Wait(1000)
+                                DeleteVehicle(GetVehiclePedIsIn(_pid))
                                 ESX.ShowNotification('You have ~r~saved~w~ a ~g~vehicle~s~ in the ~g~garage')
                             end
                         end
@@ -85,30 +85,36 @@ CreateThread(function()
                     local _dist = #(_coords - v.Cloakrooms) < 3
 
                     if _dist then
-                        _sleep = false
-                        ShowFloatingHelpNotification('Press ~r~[E]~w~ to access the cloakroom', v.Cloakrooms)
-                        if IsControlJustPressed(0, 38) then
-                            OpenClothesMenu()
+                        if Config.EnableCloakrooms then
+                            _sleep = false
+                            ShowFloatingHelpNotification('Press ~r~[E]~w~ to access the cloakroom', v.Cloakrooms)
+                            if IsControlJustPressed(0, 38) then
+                                OpenClothesMenu()
+                            end
                         end
                     end
 
                     local _dist = #(_coords - v.Shop) < 3
 
                     if _dist then
-                        _sleep = false
-                        ShowFloatingHelpNotification('Press ~r~[E]~w~ to access the gang shop', v.Shop)
-                        if IsControlJustPressed(0, 38) then
-                            OpenShopMenu()
+                        if Config.EnableGangShop then
+                            _sleep = false
+                            ShowFloatingHelpNotification('Press ~r~[E]~w~ to access the gang shop', v.Shop)
+                            if IsControlJustPressed(0, 38) then
+                                OpenShopMenu()
+                            end
                         end
                     end
 
                     local _dist = #(_coords - v.GangInfo) < 3
 
                     if _dist then
-                        _sleep = false
-                        ShowFloatingHelpNotification('Press ~r~[E]~w~ to view the personal gang info', v.GangInfo)
-                        if IsControlJustPressed(0, 38) then
-                            OpenGangInfo()
+                        if Config.EnablePersonalGangInfo then
+                            _sleep = false
+                            ShowFloatingHelpNotification('Press ~r~[E]~w~ to view the personal gang info', v.GangInfo)
+                            if IsControlJustPressed(0, 38) then
+                                OpenGangInfo()
+                            end
                         end
                     end
                 end
