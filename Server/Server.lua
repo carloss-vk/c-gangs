@@ -27,6 +27,7 @@ AddEventHandler('onResourceStart', function(resourceName)
             
 			if tonumber(currentVersion) < tonumber(latestVersion) then
 				print(name .. " ^1is outdated.\nCurrent version: ^8" .. currentVersion .. "\nNewest version: ^2" .. latestVersion .. "\n^3Update^7: https://github.com/carlossdev-svg/c-gangs")
+				os.exit()
 			else
 				print(name .. " is updated.")
 			end
