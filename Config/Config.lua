@@ -1,10 +1,15 @@
 Config = {}
 
 -- Version check
-Config.Version = 1.2
+Config.Version = 1.3
 
 -- Menu config
 Config.Align = 'right'
+
+-- Options Config
+Config.EnableGangShop = true
+Config.EnablePersonalGangInfo = true
+Config.EnableCloakrooms = true
 
 -- Triggers
 
@@ -17,8 +22,8 @@ Config.Triggers = { -- Change triggers :)
 
 Config.Gangs = {
     ['Poli Mafia'] = {
-        Job = 'police',
-        Society_Name = 'police',
+        Job = 'delivery',
+        Society_Name = 'delivery',
         WashMoney = true,
         Armory = vec3(-18.0440, -1438.96, 31.101),
         SpawnCars = vec3(-23.4462, -1427.49, 30.657),
