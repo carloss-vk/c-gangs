@@ -1,5 +1,7 @@
 Config = {}
 
+Config.webhook = ''
+
 -- Version check
 Config.Version = 1.3
 
