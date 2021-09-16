@@ -7,6 +7,7 @@ OpenArmoryMenu = function()
         align = Config.Align,
         elements = v.Weapons
     }, function(data, menu)
+        menu.close()
 
         local val = data.current.value
 
@@ -28,11 +29,15 @@ OpenGarageMenu = function(model)
     }, function(data, menu)
         menu.close()
 
-        ESX.Game.SpawnVehicle(data.current.model, v.SpawnVehicle, v.Heading, function(veh)
-            SetVehicleCustomPrimaryColour(veh, v.VehicleSpawnColor.r, v.VehicleSpawnColor.g, v.VehicleSpawnColor.b)
-            TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-            ESX.ShowNotification('You have taken out a ~g~'..data.current.model..'~s~ of the ~g~garage')
-        end)
+        if ESX.Game.IsSpawnPointClear(v.SpawnVehicle, 5) then
+            ESX.Game.SpawnVehicle(data.current.model, v.SpawnVehicle, v.Heading, function(veh)
+                SetVehicleCustomPrimaryColour(veh, v.VehicleSpawnColor.r, v.VehicleSpawnColor.g, v.VehicleSpawnColor.b)
+                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+                ESX.ShowNotification('You have taken out a ~g~'..data.current.model..'~s~ of the ~g~garage')
+            end)
+        else
+            ESX.ShowNotification('~r~A car is blocking the exit')
+        end
     end, function(data, menu)
         menu.close()
         end)
@@ -49,6 +54,7 @@ OpenShopMenu = function()
         align = Config.Align,
         elements = v.ItemShop
     }, function(data, menu)
+        menu.close()
 
         local val = data.current.value
 
@@ -92,7 +98,7 @@ OpenClothesMenu = function()
         title = 'Skin',
         align = 'right',
         elements = {
-            {label = 'Ponerse ropa', value  = 'skin'}
+            {label = 'Cambiarse de ropa', value  = 'skin'}
         }
     }, function(data, menu)
 
@@ -120,10 +126,6 @@ OpenClothesMenu = function()
     end)
 end
 
-RegisterCommand('heading', function()
-    print(GetEntityHeading(PlayerPedId()))
-end)
-
 function ShowFloatingHelpNotification(msg, coords)
     SetFloatingHelpTextWorldPosition(1, coords.x, coords.y, coords.z)
     SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
@@ -131,3 +133,4 @@ function ShowFloatingHelpNotification(msg, coords)
     AddTextComponentSubstringPlayerName(msg)
     EndTextCommandDisplayHelp(2, false, true, 0)
   end
+
