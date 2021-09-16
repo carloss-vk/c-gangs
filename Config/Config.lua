@@ -3,7 +3,7 @@ Config = {}
 Config.webhook = ''
 
 -- Version check
-Config.Version = 1.3
+Config.Version = 1.4
 
 -- Menu config
 Config.Align = 'right'
