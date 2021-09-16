@@ -72,13 +72,15 @@ CreateThread(function()
 
                     local _dist = #(_coords - v.Boss) < 3
 
-                    if _dist then
-                        _sleep = false
-                        ShowFloatingHelpNotification('Press ~r~[E]~w~ to access to the boss actions', v.Boss)
-                        if IsControlJustPressed(0, 38) then
-                            TriggerEvent(Config.Triggers.OpenBossMenu, v.Society_Name, function(data, menu)
-                                menu.close()
-                            end, {wash = v.WashMoney})
+                    if ESX.PlayerData.job.grade_name == 'boss' then
+                        if _dist then
+                            _sleep = false
+                            ShowFloatingHelpNotification('Press ~r~[E]~w~ to access to the boss actions', v.Boss)
+                            if IsControlJustPressed(0, 38) then
+                                TriggerEvent(Config.Triggers.OpenBossMenu, v.Society_Name, function(data, menu)
+                                    menu.close()
+                                end, {wash = v.WashMoney})
+                            end
                         end
                     end
 
